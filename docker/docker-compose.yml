@@ -20,5 +20,13 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
 
+  maildev:
+    image: maildev/maildev:latest
+    container_name: maildev
+    ports:
+      - "1080:1080"   # interfaz web
+      - "1025:1025"   # puerto SMTP
+    restart: unless-stopped
+
 volumes:
   portainer_data:
